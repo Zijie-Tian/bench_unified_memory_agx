@@ -4,3 +4,9 @@
 *.ptx
 *.cubin
 *.fatbin
+
+*.o
+unified_memory_debug
+explicit_memory_debug
+unified_memory
+explicit_memory

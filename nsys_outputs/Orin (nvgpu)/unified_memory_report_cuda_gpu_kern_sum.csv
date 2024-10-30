@@ -1,0 +1,3 @@
+Time (%),Total Time (ns),Instances,Avg (ns),Med (ns),Min (ns),Max (ns),StdDev (ns),Name
+99.9,2413584096,1000,2413584.1,2407520.0,2390528,2588064,19072.2,"addVectorsInto(float *, float *, float *, int)"
+0.1,2418144,3,806048.0,814560.0,777376,826208,25504.5,"initWith(float, float *, int)"
