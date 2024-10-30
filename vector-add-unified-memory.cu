@@ -59,9 +59,9 @@ int main()
     cudaMallocManaged(&b, size);
     cudaMallocManaged(&c, size);
 
-    cudaMemPrefetchAsync(a, size, 0);
-    cudaMemPrefetchAsync(b, size, 0);
-    cudaMemPrefetchAsync(c, size, 0);
+    // cudaMemPrefetchAsync(a, size, 0);
+    // cudaMemPrefetchAsync(b, size, 0);
+    // cudaMemPrefetchAsync(c, size, 0);
 
     size_t threadsPerBlock;
     size_t numberOfBlocks;

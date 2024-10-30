@@ -3,7 +3,7 @@ CUDA_OBJECTS = $(CUDA_SOURCES:.cu=.o)
 
 # Compiler and flags
 NVCC = nvcc
-NVCC_FLAGS = -arch=sm_87 -O3
+NVCC_FLAGS = -arch=sm_80 -O3
 
 # Target executables
 TARGETS = explicit_memory unified_memory explicit_memory_debug unified_memory_debug
@@ -17,7 +17,7 @@ explicit_memory: vector-add-explicit-memory.o
 unified_memory: vector-add-unified-memory.o
 	$(NVCC) $(NVCC_FLAGS) -o $@ $<
 
-debug: NVCC_FLAGS = -arch=sm_87 -g -O0
+debug: NVCC_FLAGS = -arch=sm_80 -g -O0
 debug: vector-add-explicit-memory.o vector-add-unified-memory.o
 	$(NVCC) $(NVCC_FLAGS) -o explicit_memory_debug vector-add-explicit-memory.o
 	$(NVCC) $(NVCC_FLAGS) -o unified_memory_debug vector-add-unified-memory.o
