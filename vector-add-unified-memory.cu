@@ -59,6 +59,14 @@ int main()
     cudaMallocManaged(&b, size);
     cudaMallocManaged(&c, size);
 
+    // Initialize arrays on CPU first
+    for(int i = 0; i < N; i++) {
+        a[i] = 3.0f;
+        b[i] = 4.0f;
+        c[i] = 0.0f;
+    }
+
+    // Prefetch to GPU after CPU initialization
     // cudaMemPrefetchAsync(a, size, 0);
     // cudaMemPrefetchAsync(b, size, 0);
     // cudaMemPrefetchAsync(c, size, 0);
@@ -75,9 +83,10 @@ int main()
 
     ignore = cudaGetLastError();
 
-    initWith<<<numberOfBlocks, threadsPerBlock>>>(3, a, N);
-    initWith<<<numberOfBlocks, threadsPerBlock>>>(4, b, N);
-    initWith<<<numberOfBlocks, threadsPerBlock>>>(0, c, N);
+    // No need for initWith kernels since we initialized on CPU
+    // initWith<<<numberOfBlocks, threadsPerBlock>>>(3, a, N);
+    // initWith<<<numberOfBlocks, threadsPerBlock>>>(4, b, N);
+    // initWith<<<numberOfBlocks, threadsPerBlock>>>(0, c, N);
 
     // Execute addVectorsInto kernel multiple times
     for (int i = 0; i < ADD_VECTORS_ITERATIONS; i++) {
